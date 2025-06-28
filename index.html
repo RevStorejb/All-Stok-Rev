@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALL STOK REV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #000;
+      color: #fff;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    .nama-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      flex-direction: column;
+    }
+    .nama-container input {
+      padding: 12px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+    .nama-container button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: linear-gradient(45deg, #ff004c, #00f6ff, #8dff00);
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      animation: glow 1.5s infinite alternate;
+    }
+    h1 {
+      font-size: 40px;
+      text-align: center;
+      margin-bottom: 30px;
+      animation: rainbowText 4s linear infinite;
+    }
+    .stok {
+      border: 3px solid;
+      border-image: linear-gradient(45deg, red, yellow, lime, cyan, blue, magenta, red) 1;
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 25px rgba(255,255,255,0.5);
+      animation: glowBox 2s infinite alternate;
+    }
+    .stok img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+    .stok p {
+      font-size: 18px;
+      margin-bottom: 8px;
+      animation: rainbowText 4s linear infinite;
+    }
+    .stok button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      font-size: 16px;
+      background: linear-gradient(45deg, #ff004c, #00f6ff, #8dff00);
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 15px #fff;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 10px #ff0080, 0 0 20px #00ffe0;
+      }
+      to {
+        box-shadow: 0 0 20px #ff0080, 0 0 30px #00ffe0;
+      }
+    }
+    @keyframes glowBox {
+      from {
+        box-shadow: 0 0 15px #ff004c;
+      }
+      to {
+        box-shadow: 0 0 25px #00ffea;
+      }
+    }
+    @keyframes rainbowText {
+      0% { color: red; }
+      14% { color: orange; }
+      28% { color: yellow; }
+      42% { color: lime; }
+      57% { color: cyan; }
+      71% { color: blue; }
+      85% { color: violet; }
+      100% { color: red; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="nama-container" id="namaContainer">
+  <h2 class="rainbow-text">Masukkan Nama Anda untuk Melanjutkan</h2>
+  <input type="text" id="namaInput" placeholder="Nama Anda..." />
+  <button onclick="lanjut()">Lanjut</button>
+</div>
+
+<h1>ALL STOK REV</h1>
+
+<div class="stok">
+  <img src="https://files.catbox.moe/a40he1.jpg" alt="Stok 1" />
+  <p><strong>Harga:</strong> 300K</p>
+  <p><strong>Log:</strong> GGL BIND ON</p>
+  <p><strong>Vault:</strong> 340</p>
+  <button onclick="beliStok(1)">BELI STOK 1</button>
+</div>
+
+<div class="stok">
+  <img src="https://files.catbox.moe/7bt64t.jpg" alt="Stok 2" />
+  <p><strong>Harga:</strong> 80.000</p>
+  <p><strong>Log:</strong> GGL BIND ON</p>
+  <p><strong>Vault:</strong> 115</p>
+  <button onclick="beliStok(2)">BELI STOK 2</button>
+</div>
+
+<div class="stok">
+  <img src="https://files.catbox.moe/l71hnm.jpg" alt="Stok 3" />
+  <p><strong>Harga:</strong> 70K</p>
+  <p><strong>Log:</strong> GGL BIND ON</p>
+  <p><strong>Vault:</strong> 160</p>
+  <button onclick="beliStok(3)">BELI STOK 3</button>
+</div>
+
+<script>
+  let buyerName = "";
+
+  function lanjut() {
+    const namaInput = document.getElementById('namaInput').value.trim();
+    if (namaInput !== "") {
+      buyerName = namaInput;
+      document.getElementById('namaContainer').style.display = "none";
+    } else {
+      alert("Silakan masukkan nama Anda!");
+    }
+  }
+
+  function beliStok(no) {
+    const nomorWa = "085828481568";
+    let pesan = `BANG SAYA MAU BELI STOK YANG KE ${no}`;
+    let url = `https://wa.me/${nomorWa}?text=${encodeURIComponent(pesan)}`;
+    window.open(url, '_blank');
+  }
+</script>
+
+</body>
+</html>
